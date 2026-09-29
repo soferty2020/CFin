@@ -1,0 +1,21 @@
+# CodeGraph local index
+.codegraph/
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

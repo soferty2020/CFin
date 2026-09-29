@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cfin
+      POSTGRES_USER: cfin
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cfin -d cfin"]
+      interval: 5s
+      retries: 15
+  api:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://cfin:${DB_PASSWORD}@db:5432/cfin
+      ADMIN_LOGIN: ${ADMIN_LOGIN:?Set ADMIN_LOGIN}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD}
+      APP_ORIGIN: ${APP_ORIGIN:?Set APP_ORIGIN}
+      NODE_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:80"
+    depends_on: [api]
+volumes:
+  pgdata:

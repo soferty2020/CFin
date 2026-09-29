@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS users (id uuid PRIMARY KEY, login text NOT NULL UNIQUE, password_hash text NOT NULL, role text NOT NULL CHECK(role IN ('admin','user')));
+CREATE TABLE IF NOT EXISTS sessions (token_hash text PRIMARY KEY, user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE, expires_at timestamptz NOT NULL);
+CREATE TABLE IF NOT EXISTS accounts (id uuid PRIMARY KEY, name text NOT NULL, kind text NOT NULL CHECK(kind IN ('bank','cash')), opening_balance numeric(18,2) NOT NULL DEFAULT 0, is_active boolean NOT NULL DEFAULT true, sort_order integer NOT NULL DEFAULT 0, created_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS groups (id uuid PRIMARY KEY, name text NOT NULL, sort_order integer NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS subgroups (id uuid PRIMARY KEY, group_id uuid NOT NULL REFERENCES groups(id) ON DELETE RESTRICT, name text NOT NULL, sort_order integer NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS categories (id uuid PRIMARY KEY, subgroup_id uuid NOT NULL REFERENCES subgroups(id) ON DELETE RESTRICT, name text NOT NULL, sort_order integer NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS entries (id uuid PRIMARY KEY, category_id uuid NOT NULL REFERENCES categories(id) ON DELETE RESTRICT, entry_date date NOT NULL, direction text NOT NULL CHECK(direction IN ('income','expense')), amount numeric(18,2) NOT NULL CHECK(amount>0), account_id uuid REFERENCES accounts(id) ON DELETE RESTRICT, created_by uuid NOT NULL REFERENCES users(id), created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now());
+CREATE INDEX IF NOT EXISTS entries_cell_idx ON entries(entry_date, category_id, direction);
