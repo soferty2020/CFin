@@ -2,91 +2,62 @@
 
 **Внутренний веб-сервис IT-компании «Калипсо»** для учёта, планирования и контроля денежных потоков.
 
-## Текущий статус
+## Статус
 
-CFin — развёрнутое и работающее веб-приложение. Не greenfield-проект.
+CFin — уже развёрнутое и работающее приложение. Это **не greenfield-проект**.
 
-- **Сервер:** 82.146.61.4 (Ubuntu 24.04 LTS, пользователь `cfinadmin`)
-- **Корень проекта:** `/srv/cfin`
-- **Доступ:** SSH-туннель → http://127.0.0.1:3001
-- **Контейнеры:** `cfin-api-1`, `cfin-db-1` (PostgreSQL 16), `cfin-web-1` (Nginx)
-- **Локальный снимок кода:** `server-snapshot/`
+- **Production:** https://cfin.calypsoia.ru/
+- **Сервер:** 82.146.61.4, Ubuntu 24.04 LTS
+- **SSH-пользователь:** `cfinadmin`
+- **Production root:** `/srv/cfin`
+- **Deployment:** Docker Compose
+- **Database:** PostgreSQL 16
+- **Source of truth для production:** фактические файлы и поведение `/srv/cfin`
 
-## Технологический стек
+> Репозиторий и `server-snapshot/` могут отставать от production. Перед изменениями, влияющими на production, сверять актуальное состояние сервера.
+
+## Стек
 
 | Слой | Технологии |
-|------|-----------|
-| Frontend | React 19, TypeScript, Vite 6, CSS без UI-фреймворка |
+|---|---|
+| Frontend | React 19, TypeScript, Vite 6, CSS |
 | Backend | Node.js 22, Express, TypeScript |
 | Database | PostgreSQL 16 |
 | Deployment | Docker + Docker Compose |
-| Web frontend | Nginx внутри web-контейнера |
+| Web | Nginx |
 
-## Модель данных
+## Уже реализовано в MVP
 
-Иерархия: `groups` → `subgroups` → `categories` → `entries`
+- авторизация и серверные сессии;
+- группы → подгруппы → статьи;
+- платёжный календарь;
+- отдельные строки «Доход» / «Расход»;
+- несколько `entries` в одной календарной ячейке;
+- создание, редактирование и удаление финансовых записей;
+- агрегирование сумм по ячейкам;
+- навигация по месяцам;
+- production HTTPS-доступ.
 
-- `users` — пользователи (login, password_hash, role)
-- `sessions` — сессии (token_hash, user_id, expires_at)
-- `groups` — группы статей (id, name, sort_order)
-- `subgroups` — подгруппы (id, group_id, name, sort_order)
-- `categories` — статьи (id, subgroup_id, name, sort_order)
-- `entries` — финансовые записи (id, category_id, entry_date, direction, amount, created_by, created_at, updated_at)
+## Ключевая модель
 
-Принцип: одна календарная ячейка может содержать несколько `entries`. В календаре показывается агрегированный итог, при открытии ячейки — работа с каждой записью отдельно.
+`groups → subgroups → categories → entries`
 
-## Уже реализовано (MVP)
+Одна календарная ячейка может содержать несколько `entries`. В таблице показывается агрегированный итог, а при открытии ячейки пользователь работает с каждой записью отдельно.
 
-- Авторизация по логину и паролю (cookie-сессии)
-- Создание групп, подгрупп и статей
-- Платёжный календарь с навигацией по месяцам
-- Раздельные строки «Доход» и «Расход» для каждой статьи
-- Добавление, редактирование, удаление финансовых записей
-- Несколько записей в одной календарной ячейке
-- Агрегирование суммы и количества записей в календаре
-- PATCH/DELETE для групп, подгрупп и статей (backend готов)
-- Визуальное выделение выходных и текущего дня
+## Где смотреть дальше
 
-## Ближайший инкремент: UI v2.1
+- `AGENTS.md` — правила работы агентов;
+- `ROADMAP.md` — последовательность продуктовых инкрементов;
+- `docs/CURRENT_STATE.md` — текущее подтверждённое состояние и что нужно перепроверить;
+- `docs/ARCHITECTURE.md` — архитектурные границы;
+- `docs/DEPLOYMENT.md` — production/deploy/rollback;
+- GitHub Issues — рабочий backlog.
 
-Цель — полноценное управление группами, подгруппами и статьями через собственные модальные окна, без `prompt()`/`confirm()`.
+## Принципы разработки
 
-Подробнее — в `docs/requirements.md` и `docs/architecture-proposal.md`.
-
-## Структура локальной папки
-
-```
-D:\Hermes\CFin\
-├── README.md                         ← этот файл
-├── docs/
-│   ├── requirements.md               ← функциональные требования
-│   └── architecture-proposal.md      ← архитектурное предложение
-└── server-snapshot/                  ← локальная копия серверного кода
-    ├── backend/
-    │   ├── Dockerfile
-    │   ├── package.json
-    │   ├── tsconfig.json
-    │   └── src/
-    │       └── index.ts             ← Express API (source of truth на сервере)
-    ├── frontend/
-    │   ├── Dockerfile
-    │   ├── index.html
-    │   ├── nginx.conf
-    │   ├── package.json
-    │   ├── tsconfig.json
-    │   └── src/
-    │       ├── main.tsx             ← React-приложение
-    │       └── style.css            ← стили
-    ├── db/
-    │   └── init.sql                  ← схема БД
-    └── docker-compose.yml
-```
-
-## Правила разработки
-
-1. **Серверная версия — source of truth.** Перед каждым инкрементом — получать актуальные файлы с сервера.
-2. **Инкрементальный подход.** Небольшие завершённые изменения поверх существующего кода.
-3. **Сохранять данные.** Не использовать каскадное удаление без согласования.
-4. **Backup перед destructive-операциями.** `pg_dump` при риске для данных, копии файлов в `/srv/cfin/backups/`.
-5. **Не выводить секреты.** `.env`, пароли, токены, SSH-ключи, session cookie — не показывать.
-6. **Docker-сборка.** `docker compose build` → `docker compose up -d --no-deps` → smoke-test.
+1. Production не пересоздавать и не переписывать без необходимости.
+2. Делать небольшие законченные инкременты.
+3. Не удалять/сбрасывать данные.
+4. Перед миграциями и рискованными изменениями делать backup.
+5. Не публиковать секреты из `.env`, SSH private key, session cookies.
+6. После каждого deploy выполнять smoke test на https://cfin.calypsoia.ru/.
