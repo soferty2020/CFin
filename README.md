@@ -61,3 +61,17 @@ CFin — уже развёрнутое и работающее приложен�
 4. Перед миграциями и рискованными изменениями делать backup.
 5. Не публиковать секреты из `.env`, SSH private key, session cookies.
 6. После каждого deploy выполнять smoke test на https://cfin.calypsoia.ru/.
+
+
+## Project context for agents
+
+- `docs/PROJECT_CONTEXT.md` — complete handoff context
+- `docs/PRODUCT.md` — product/business rules
+- `docs/SERVER.md` — server and production context
+- `docs/ARCHITECTURE.md` — canonical architecture overview
+- `docs/CURRENT_STATE.md` — verified current state
+- `docs/DEPLOYMENT.md` — deployment and rollback
+- `docs/DECISIONS.md` — durable confirmed decisions
+- `docs/BACKLOG.md` — issue/dependency map
+- `ROADMAP.md` — major product sequence
+- `AGENTS.md` — operating rules for Hermes/agents
