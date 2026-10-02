@@ -1,5 +1,7 @@
 # CFin — Архитектура (фактическая)
 
+> **Status note:** This document contains requirements/architecture captured from an earlier project snapshot. For current deployed facts, read `docs/CURRENT_STATE.md` and complete Issue #1 production audit. Production `/srv/cfin` is the source of truth.
+
 ## 1. Фактический технологический стек (развёрнутый)
 
 | Слой | Технология | Причина |
