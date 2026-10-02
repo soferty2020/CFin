@@ -182,3 +182,26 @@ Avoid repeated searches for information already available in Memorix or CodeGrap
 
 Do not perform broad repository audits unless explicitly requested.
 
+
+
+## GitHub workflow
+
+GitHub Issues are the active development backlog.
+
+Before starting work:
+
+1. Read `ROADMAP.md`.
+2. Read `docs/CURRENT_STATE.md`.
+3. Read the selected GitHub Issue and its acceptance criteria.
+4. Verify production state if the issue depends on deployed behavior.
+5. Keep scope limited to the selected issue.
+
+After implementation:
+
+1. Build/type-check affected components.
+2. Run regression checks.
+3. Prepare deploy/rollback notes when production is affected.
+4. Update the Issue with the result and remaining risks.
+5. Update `docs/CURRENT_STATE.md` if confirmed project facts changed.
+
+The current roadmap is tracked in GitHub Issues #1–#9.
