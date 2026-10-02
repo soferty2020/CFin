@@ -1,5 +1,7 @@
 # CFin — Требования (фактические)
 
+> **Status note:** This document contains requirements/architecture captured from an earlier project snapshot. For current deployed facts, read `docs/CURRENT_STATE.md` and complete Issue #1 production audit. Production `/srv/cfin` is the source of truth.
+
 ## 1. Контекст
 
 CFin — уже развёрнутый и работающий веб-сервис компании «Калипсо» для управления денежными потоками. Развитие идёт инкрементально поверх существующего кода в `/srv/cfin`. Серверная версия — source of truth.
