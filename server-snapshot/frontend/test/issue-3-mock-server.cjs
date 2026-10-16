@@ -19,7 +19,11 @@ const ids = {
 };
 const pad = n => String(n).padStart(2, '0');
 const localDate = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-const today = new Date();
+// Optional fixed calendar date for repeatable local-only browser regression.
+const fixtureToday = process.env.CFIN_MOCK_TODAY;
+if (fixtureToday && (!validDateFixture(fixtureToday))) throw Error('Invalid CFIN_MOCK_TODAY');
+function validDateFixture(value) { return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value)) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value; }
+const today = fixtureToday ? new Date(Number(fixtureToday.slice(0,4)), Number(fixtureToday.slice(5,7))-1, Number(fixtureToday.slice(8,10))) : new Date();
 const base = new Date(today.getFullYear(), today.getMonth(), 1);
 const date = n => localDate(new Date(base.getFullYear(), base.getMonth(), n));
 const weekendDay = [6, 7].map(n => new Date(base.getFullYear(), base.getMonth(), n)).find(d => d.getMonth() === base.getMonth() && [0, 6].includes(d.getDay())) || new Date(base.getFullYear(), base.getMonth(), 1 + (6 - base.getDay() + 7) % 7);

@@ -1,0 +1,1054 @@
+{
+  "configuration": {
+    "origin": "http://127.0.0.1:54214",
+    "upstream": "http://127.0.0.1:54213",
+    "timezone": "Asia/Novosibirsk",
+    "ordinaryDelayMs": 75,
+    "slowDelayMs": 1200
+  },
+  "colors": [
+    {
+      "label": "weekday",
+      "day": "2026-10-15",
+      "date": "Thu Oct 15 2026 12:00:00 GMT+0700 (Красноярск, стандартное время)",
+      "zone": "Asia/Novosibirsk",
+      "html": "<th class=\"today\"><span class=\"dow\">Чт</span><span class=\"dnum\">15</span></th>",
+      "number": "15",
+      "foreground": "rgb(6, 35, 43)",
+      "background": "rgba(0, 0, 0, 0)",
+      "backgroundImage": "linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183))",
+      "dnum": {
+        "foreground": "rgb(8, 15, 25)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "dow": {
+        "foreground": "rgb(146, 169, 187)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "rules": [
+        {
+          "selector": "th .dow",
+          "css": "th .dow { display: block; font-size: 10px; font-weight: 400; color: var(--muted); line-height: 1; margin-bottom: 2px; }"
+        },
+        {
+          "selector": "th.today .dnum",
+          "css": "th.today .dnum { color: rgb(8, 15, 25); }"
+        },
+        {
+          "selector": "th.today",
+          "css": "th.today { color: rgb(6, 35, 43); box-shadow: 0 0 0 2px var(--accent),inset 0 0 12px #fff3; background: linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183)) !important; }"
+        },
+        {
+          "selector": "td.today",
+          "css": "td.today { box-shadow: rgba(66, 217, 203, 0.2) 0px 0px 0px 2px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { color: rgb(185, 208, 220); background: rgb(27, 41, 54) !important; }"
+        },
+        {
+          "selector": ".today",
+          "css": ".today { box-shadow: inset 0 0 0 2px var(--accent); }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(26, 36, 56) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(122, 139, 160); }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend",
+          "css": ".amount.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(20, 37, 57) !important; }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": "tr.income > td.weekend, tr.expense > td.weekend",
+          "css": "tr.income > td.weekend, tr.expense > td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": ".today-column-outline",
+          "css": ".today-column-outline { position: absolute; z-index: 3; pointer-events: none; border: 2px solid rgb(73, 217, 219); box-shadow: rgba(73, 217, 219, 0.133) 0px 0px 10px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(39, 58, 80) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(190, 208, 223); }"
+        },
+        {
+          "selector": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend",
+          "css": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend { border-color: rgb(58, 86, 106); background: rgb(28, 46, 65) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(37, 61, 82) !important; }"
+        },
+        {
+          "selector": ".amount.weekend .plus",
+          "css": ".amount.weekend .plus { color: rgb(155, 185, 202); opacity: 0.8; }"
+        }
+      ]
+    },
+    {
+      "label": "saturday",
+      "day": "2026-10-17",
+      "date": "Sat Oct 17 2026 12:00:00 GMT+0700 (Красноярск, стандартное время)",
+      "zone": "Asia/Novosibirsk",
+      "html": "<th class=\"weekend today\"><span class=\"dow\">Сб</span><span class=\"dnum\">17</span></th>",
+      "number": "17",
+      "foreground": "rgb(185, 208, 220)",
+      "background": "rgb(39, 58, 80)",
+      "backgroundImage": "none",
+      "dnum": {
+        "foreground": "rgb(8, 15, 25)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "dow": {
+        "foreground": "rgb(190, 208, 223)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "rules": [
+        {
+          "selector": "th .dow",
+          "css": "th .dow { display: block; font-size: 10px; font-weight: 400; color: var(--muted); line-height: 1; margin-bottom: 2px; }"
+        },
+        {
+          "selector": "th.today .dnum",
+          "css": "th.today .dnum { color: rgb(8, 15, 25); }"
+        },
+        {
+          "selector": "th.today",
+          "css": "th.today { color: rgb(6, 35, 43); box-shadow: 0 0 0 2px var(--accent),inset 0 0 12px #fff3; background: linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183)) !important; }"
+        },
+        {
+          "selector": "td.today",
+          "css": "td.today { box-shadow: rgba(66, 217, 203, 0.2) 0px 0px 0px 2px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { color: rgb(185, 208, 220); background: rgb(27, 41, 54) !important; }"
+        },
+        {
+          "selector": ".today",
+          "css": ".today { box-shadow: inset 0 0 0 2px var(--accent); }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(26, 36, 56) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(122, 139, 160); }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend",
+          "css": ".amount.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(20, 37, 57) !important; }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": "tr.income > td.weekend, tr.expense > td.weekend",
+          "css": "tr.income > td.weekend, tr.expense > td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": ".today-column-outline",
+          "css": ".today-column-outline { position: absolute; z-index: 3; pointer-events: none; border: 2px solid rgb(73, 217, 219); box-shadow: rgba(73, 217, 219, 0.133) 0px 0px 10px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(39, 58, 80) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(190, 208, 223); }"
+        },
+        {
+          "selector": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend",
+          "css": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend { border-color: rgb(58, 86, 106); background: rgb(28, 46, 65) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(37, 61, 82) !important; }"
+        },
+        {
+          "selector": ".amount.weekend .plus",
+          "css": ".amount.weekend .plus { color: rgb(155, 185, 202); opacity: 0.8; }"
+        }
+      ]
+    },
+    {
+      "label": "sunday",
+      "day": "2026-10-18",
+      "date": "Sun Oct 18 2026 12:00:00 GMT+0700 (Красноярск, стандартное время)",
+      "zone": "Asia/Novosibirsk",
+      "html": "<th class=\"weekend today\"><span class=\"dow\">Вс</span><span class=\"dnum\">18</span></th>",
+      "number": "18",
+      "foreground": "rgb(185, 208, 220)",
+      "background": "rgb(39, 58, 80)",
+      "backgroundImage": "none",
+      "dnum": {
+        "foreground": "rgb(8, 15, 25)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "dow": {
+        "foreground": "rgb(190, 208, 223)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "rules": [
+        {
+          "selector": "th .dow",
+          "css": "th .dow { display: block; font-size: 10px; font-weight: 400; color: var(--muted); line-height: 1; margin-bottom: 2px; }"
+        },
+        {
+          "selector": "th.today .dnum",
+          "css": "th.today .dnum { color: rgb(8, 15, 25); }"
+        },
+        {
+          "selector": "th.today",
+          "css": "th.today { color: rgb(6, 35, 43); box-shadow: 0 0 0 2px var(--accent),inset 0 0 12px #fff3; background: linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183)) !important; }"
+        },
+        {
+          "selector": "td.today",
+          "css": "td.today { box-shadow: rgba(66, 217, 203, 0.2) 0px 0px 0px 2px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { color: rgb(185, 208, 220); background: rgb(27, 41, 54) !important; }"
+        },
+        {
+          "selector": ".today",
+          "css": ".today { box-shadow: inset 0 0 0 2px var(--accent); }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(26, 36, 56) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(122, 139, 160); }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend",
+          "css": ".amount.weekend { background: rgb(16, 27, 44) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(20, 37, 57) !important; }"
+        },
+        {
+          "selector": "td.weekend",
+          "css": "td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": "tr.income > td.weekend, tr.expense > td.weekend",
+          "css": "tr.income > td.weekend, tr.expense > td.weekend { background: rgb(16, 27, 44); }"
+        },
+        {
+          "selector": ".today-column-outline",
+          "css": ".today-column-outline { position: absolute; z-index: 3; pointer-events: none; border: 2px solid rgb(73, 217, 219); box-shadow: rgba(73, 217, 219, 0.133) 0px 0px 10px inset; }"
+        },
+        {
+          "selector": "th.weekend",
+          "css": "th.weekend { background: rgb(39, 58, 80) !important; }"
+        },
+        {
+          "selector": "th.weekend .dow",
+          "css": "th.weekend .dow { color: rgb(190, 208, 223); }"
+        },
+        {
+          "selector": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend",
+          "css": ".amount.weekend, td.weekend, tr.income > td.weekend, tr.expense > td.weekend { border-color: rgb(58, 86, 106); background: rgb(28, 46, 65) !important; }"
+        },
+        {
+          "selector": ".amount.weekend.has-data",
+          "css": ".amount.weekend.has-data { background: rgb(37, 61, 82) !important; }"
+        },
+        {
+          "selector": ".amount.weekend .plus",
+          "css": ".amount.weekend .plus { color: rgb(155, 185, 202); opacity: 0.8; }"
+        }
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "lagMs": 75,
+      "snapshots": [
+        {
+          "elapsedMs": null,
+          "clock": "browser performance.now; distinct from Node clock",
+          "at": 453.5,
+          "heading": null,
+          "text": null,
+          "rows": []
+        },
+        {
+          "elapsedMs": 15.999099999999999,
+          "at": 466.40000000596046,
+          "heading": "Итого: 125,5 ₽",
+          "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+          "rows": [
+            "100 ₽\nИзменить\nУдалить",
+            "25,5 ₽\nИзменить\nУдалить"
+          ],
+          "buttons": [
+            "Изменить",
+            "Удалить",
+            "Изменить",
+            "Удалить"
+          ],
+          "editing": null,
+          "confirmation": null
+        },
+        {
+          "elapsedMs": 116.59440000000018,
+          "at": 568.6000000089407,
+          "heading": "Итого: 6 ₽",
+          "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+          "rows": [
+            "6 ₽\nИзменить\nУдалить"
+          ],
+          "buttons": [
+            "Изменить",
+            "Удалить"
+          ],
+          "editing": null,
+          "confirmation": null
+        }
+      ],
+      "actions": [
+        {
+          "action": "edit",
+          "visible": {
+            "at": 770.1000000089407,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": null
+          },
+          "activated": {
+            "at": 784,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nИзменение записи\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nСохранить изменения\nОтмена",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": "100.00",
+            "confirmation": null
+          }
+        },
+        {
+          "action": "delete",
+          "visible": {
+            "at": 999.9000000059605,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": null
+          },
+          "activated": {
+            "at": 1003.3000000119209,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": "Удалить запись\n×\n\nУдалить запись 100 ₽?\n\nУдалить\nОтмена"
+          }
+        }
+      ]
+    },
+    {
+      "lagMs": 1200,
+      "snapshots": [
+        {
+          "elapsedMs": null,
+          "clock": "browser performance.now; distinct from Node clock",
+          "at": 1183.6000000089407,
+          "heading": null,
+          "text": null,
+          "rows": []
+        },
+        {
+          "elapsedMs": 11.597999999999956,
+          "at": 1186.2000000029802,
+          "heading": "Итого: 125,5 ₽",
+          "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+          "rows": [
+            "100 ₽\nИзменить\nУдалить",
+            "25,5 ₽\nИзменить\nУдалить"
+          ],
+          "buttons": [
+            "Изменить",
+            "Удалить",
+            "Изменить",
+            "Удалить"
+          ],
+          "editing": null,
+          "confirmation": null
+        },
+        {
+          "elapsedMs": 1244.5614999999998,
+          "at": 2421.6000000089407,
+          "heading": "Итого: 6 ₽",
+          "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+          "rows": [
+            "6 ₽\nИзменить\nУдалить"
+          ],
+          "buttons": [
+            "Изменить",
+            "Удалить"
+          ],
+          "editing": null,
+          "confirmation": null
+        }
+      ],
+      "actions": [
+        {
+          "action": "edit",
+          "visible": {
+            "at": 2717.7000000029802,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": null
+          },
+          "activated": {
+            "at": 2737,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nИзменение записи\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nСохранить изменения\nОтмена",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": "100.00",
+            "confirmation": null
+          }
+        },
+        {
+          "action": "delete",
+          "visible": {
+            "at": 3999.1000000089407,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": null
+          },
+          "activated": {
+            "at": 4005.800000011921,
+            "heading": "Итого: 125,5 ₽",
+            "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 125,5 ₽\n100 ₽\nИзменить\nУдалить\n25,5 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+            "rows": [
+              "100 ₽\nИзменить\nУдалить",
+              "25,5 ₽\nИзменить\nУдалить"
+            ],
+            "buttons": [
+              "Изменить",
+              "Удалить",
+              "Изменить",
+              "Удалить"
+            ],
+            "editing": null,
+            "confirmation": "Удалить запись\n×\n\nУдалить запись 100 ₽?\n\nУдалить\nОтмена"
+          }
+        }
+      ]
+    }
+  ],
+  "timing": [
+    {
+      "seq": 0,
+      "method": "GET",
+      "path": "/api/auth/me",
+      "startMs": 151.5141,
+      "lagMs": 0,
+      "error": "connect ECONNREFUSED 127.0.0.1:54213"
+    },
+    {
+      "seq": 1,
+      "method": "GET",
+      "path": "/api/auth/me",
+      "startMs": 326.2459,
+      "lagMs": 0,
+      "responseMs": 340.0475,
+      "status": 200,
+      "endMs": 340.7253
+    },
+    {
+      "seq": 2,
+      "method": "GET",
+      "path": "/",
+      "startMs": 813.1553,
+      "lagMs": 0,
+      "responseMs": 824.9049,
+      "status": 200,
+      "endMs": 826.0396
+    },
+    {
+      "seq": 3,
+      "method": "GET",
+      "path": "/assets/index-BgMggJ-6.css",
+      "startMs": 854.0449,
+      "lagMs": 0,
+      "responseMs": 859.5391,
+      "status": 200,
+      "endMs": 868.9674
+    },
+    {
+      "seq": 4,
+      "method": "GET",
+      "path": "/assets/index-E0ufKN6M.js",
+      "startMs": 855.0487,
+      "lagMs": 0,
+      "responseMs": 859.8817,
+      "status": 200,
+      "endMs": 874.665
+    },
+    {
+      "seq": 5,
+      "method": "GET",
+      "path": "/calypso-logo.png",
+      "startMs": 926.4935,
+      "lagMs": 0,
+      "responseMs": 934.1808,
+      "status": 200,
+      "endMs": 936.3087
+    },
+    {
+      "seq": 6,
+      "method": "GET",
+      "path": "/api/auth/me",
+      "startMs": 953.6242,
+      "lagMs": 0,
+      "responseMs": 955.4404,
+      "status": 200,
+      "endMs": 955.8126
+    },
+    {
+      "seq": 7,
+      "method": "GET",
+      "path": "/favicon.ico",
+      "startMs": 957.5755,
+      "lagMs": 0,
+      "responseMs": 967.181,
+      "status": 404,
+      "endMs": 967.7243
+    },
+    {
+      "seq": 8,
+      "method": "GET",
+      "path": "/api/categories",
+      "startMs": 1074.4707,
+      "lagMs": 0,
+      "responseMs": 1085.7197,
+      "status": 200,
+      "endMs": 1086.1187
+    },
+    {
+      "seq": 9,
+      "method": "GET",
+      "path": "/api/calendar?month=2026-10",
+      "startMs": 1074.9251,
+      "lagMs": 0,
+      "responseMs": 1103.8849,
+      "status": 200,
+      "endMs": 1104.4073
+    },
+    {
+      "seq": 10,
+      "method": "GET",
+      "path": "/api/accounts",
+      "startMs": 1075.2797,
+      "lagMs": 0,
+      "responseMs": 1104.7298,
+      "status": 200,
+      "endMs": 1105.0789
+    },
+    {
+      "seq": 11,
+      "method": "GET",
+      "path": "/api/balances",
+      "startMs": 1076.4475,
+      "lagMs": 0,
+      "responseMs": 1105.3333,
+      "status": 200,
+      "endMs": 1105.6237
+    },
+    {
+      "seq": 12,
+      "method": "GET",
+      "path": "/",
+      "startMs": 1542.4851,
+      "lagMs": 0,
+      "responseMs": 1543.7701,
+      "status": 200,
+      "endMs": 1544.147
+    },
+    {
+      "seq": 13,
+      "method": "GET",
+      "path": "/assets/index-BgMggJ-6.css",
+      "startMs": 1554.2013,
+      "lagMs": 0,
+      "responseMs": 1556.0518,
+      "status": 200,
+      "endMs": 1556.5455
+    },
+    {
+      "seq": 14,
+      "method": "GET",
+      "path": "/assets/index-E0ufKN6M.js",
+      "startMs": 1554.6484,
+      "lagMs": 0,
+      "responseMs": 1556.7851,
+      "status": 200,
+      "endMs": 1557.814
+    },
+    {
+      "seq": 15,
+      "method": "GET",
+      "path": "/calypso-logo.png",
+      "startMs": 1609.5795,
+      "lagMs": 0,
+      "responseMs": 1610.6859,
+      "status": 200,
+      "endMs": 1611.5633
+    },
+    {
+      "seq": 16,
+      "method": "GET",
+      "path": "/api/auth/me",
+      "startMs": 1627.5307,
+      "lagMs": 0,
+      "responseMs": 1632.207,
+      "status": 200,
+      "endMs": 1633.3355
+    },
+    {
+      "seq": 17,
+      "method": "GET",
+      "path": "/api/categories",
+      "startMs": 1723.8525,
+      "lagMs": 0,
+      "responseMs": 1725.3008,
+      "status": 200,
+      "endMs": 1725.4775
+    },
+    {
+      "seq": 18,
+      "method": "GET",
+      "path": "/api/calendar?month=2026-10",
+      "startMs": 1724.3165,
+      "lagMs": 0,
+      "responseMs": 1725.6044,
+      "status": 200,
+      "endMs": 1725.7525
+    },
+    {
+      "seq": 19,
+      "method": "GET",
+      "path": "/api/accounts",
+      "startMs": 1724.7894,
+      "lagMs": 0,
+      "responseMs": 1725.8353,
+      "status": 200,
+      "endMs": 1725.9567
+    },
+    {
+      "seq": 20,
+      "method": "GET",
+      "path": "/api/balances",
+      "startMs": 1725.0656,
+      "lagMs": 0,
+      "responseMs": 1726.0317,
+      "status": 200,
+      "endMs": 1726.1976
+    },
+    {
+      "seq": 21,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 1953.0482,
+      "lagMs": 0,
+      "responseMs": 1954.0428,
+      "status": 200,
+      "endMs": 1954.252
+    },
+    {
+      "seq": 22,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 1956.4567,
+      "lagMs": 0,
+      "responseMs": 1956.954,
+      "status": 200,
+      "endMs": 1957.1313
+    },
+    {
+      "seq": 23,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 1959.8817,
+      "lagMs": 0,
+      "responseMs": 1960.4034,
+      "status": 200,
+      "endMs": 1960.5405
+    },
+    {
+      "seq": 24,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 2003.3262,
+      "lagMs": 75,
+      "responseMs": 2093.6515,
+      "status": 200,
+      "endMs": 2093.8214
+    },
+    {
+      "seq": 25,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 2277.1359,
+      "lagMs": 0,
+      "responseMs": 2277.7695,
+      "status": 200,
+      "endMs": 2277.9592
+    },
+    {
+      "seq": 26,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 2306.5702,
+      "lagMs": 75,
+      "responseMs": 2393.9332,
+      "status": 200,
+      "endMs": 2394.1679
+    },
+    {
+      "seq": 27,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 2506.9426,
+      "lagMs": 0,
+      "responseMs": 2507.5371,
+      "status": 200,
+      "endMs": 2507.7187
+    },
+    {
+      "seq": 28,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 2523.8454,
+      "lagMs": 75,
+      "responseMs": 2619.4122,
+      "status": 200,
+      "endMs": 2619.9228
+    },
+    {
+      "seq": 29,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 2708.5798,
+      "lagMs": 0,
+      "responseMs": 2709.47,
+      "status": 200,
+      "endMs": 2709.6814
+    },
+    {
+      "seq": 30,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 2725.1101,
+      "lagMs": 1200,
+      "responseMs": 3934.7209,
+      "status": 200,
+      "endMs": 3935.2952
+    },
+    {
+      "seq": 31,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 4191.7886,
+      "lagMs": 0,
+      "responseMs": 4192.7022,
+      "status": 200,
+      "endMs": 4192.8761
+    },
+    {
+      "seq": 32,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 4239.2518,
+      "lagMs": 1200,
+      "responseMs": 5441.7773,
+      "status": 200,
+      "endMs": 5441.9499
+    },
+    {
+      "seq": 33,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 5497.0454,
+      "lagMs": 0,
+      "responseMs": 5502.9223,
+      "status": 200,
+      "endMs": 5503.7454
+    },
+    {
+      "seq": 34,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 5527.8773,
+      "lagMs": 1200,
+      "responseMs": 6739.6037,
+      "status": 200,
+      "endMs": 6739.9667
+    },
+    {
+      "seq": 35,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "startMs": 6772.3874,
+      "lagMs": 0,
+      "responseMs": 6774.291,
+      "status": 200,
+      "endMs": 6774.7273
+    },
+    {
+      "seq": 36,
+      "method": "GET",
+      "path": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "startMs": 6780.0007,
+      "lagMs": 1200,
+      "responseMs": 7989.9852,
+      "status": 200,
+      "endMs": 7990.1877
+    },
+    {
+      "seq": 37,
+      "method": "GET",
+      "path": "/",
+      "startMs": 8090.2326,
+      "lagMs": 0,
+      "responseMs": 8093.2513,
+      "status": 200,
+      "endMs": 8093.592
+    },
+    {
+      "seq": 38,
+      "method": "GET",
+      "path": "/assets/index-BgMggJ-6.css",
+      "startMs": 8099.0535,
+      "lagMs": 0,
+      "responseMs": 8107.4584,
+      "status": 200,
+      "endMs": 8109.5303
+    },
+    {
+      "seq": 39,
+      "method": "GET",
+      "path": "/assets/index-E0ufKN6M.js",
+      "startMs": 8099.5036,
+      "lagMs": 0,
+      "responseMs": 8107.8661,
+      "status": 200,
+      "endMs": 8125.004
+    },
+    {
+      "seq": 40,
+      "method": "GET",
+      "path": "/calypso-logo.png",
+      "startMs": 8181.358,
+      "lagMs": 0,
+      "responseMs": 8182.3696,
+      "status": 200,
+      "endMs": 8182.6955
+    },
+    {
+      "seq": 41,
+      "method": "GET",
+      "path": "/api/auth/me",
+      "startMs": 8199.0668,
+      "lagMs": 0,
+      "responseMs": 8203.3194,
+      "status": 200,
+      "endMs": 8204.1764
+    },
+    {
+      "seq": 42,
+      "method": "GET",
+      "path": "/api/categories",
+      "startMs": 8312.2516,
+      "lagMs": 0,
+      "responseMs": 8324.378,
+      "status": 200,
+      "endMs": 8324.8198
+    },
+    {
+      "seq": 43,
+      "method": "GET",
+      "path": "/api/calendar?month=2026-10",
+      "startMs": 8312.7909,
+      "lagMs": 0,
+      "responseMs": 8325.0625,
+      "status": 200,
+      "endMs": 8325.4156
+    },
+    {
+      "seq": 44,
+      "method": "GET",
+      "path": "/api/accounts",
+      "startMs": 8313.5704,
+      "lagMs": 0,
+      "responseMs": 8328.3518,
+      "status": 200,
+      "endMs": 8329.4114
+    },
+    {
+      "seq": 45,
+      "method": "GET",
+      "path": "/api/balances",
+      "startMs": 8315.1829,
+      "lagMs": 0,
+      "responseMs": 8330.3702,
+      "status": 200,
+      "endMs": 8331.2623
+    }
+  ],
+  "before": [
+    {
+      "id": "aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "entry_date": "2026-10-03",
+      "category_id": "33333333-3333-4333-8333-333333333333",
+      "direction": "income",
+      "amount": "100.00",
+      "account_id": "55555555-5555-4555-8555-555555555555"
+    },
+    {
+      "id": "aaaaaaa2-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "entry_date": "2026-10-03",
+      "category_id": "33333333-3333-4333-8333-333333333333",
+      "direction": "income",
+      "amount": "25.50",
+      "account_id": "66666666-6666-4666-8666-666666666666"
+    }
+  ],
+  "newer": [
+    {
+      "id": "aaaaaaa6-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "entry_date": "2026-10-17",
+      "category_id": "44444444-4444-4444-8444-444444444444",
+      "direction": "expense",
+      "amount": "6.00",
+      "account_id": "55555555-5555-4555-8555-555555555555"
+    }
+  ],
+  "after": [
+    {
+      "id": "aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "entry_date": "2026-10-03",
+      "category_id": "33333333-3333-4333-8333-333333333333",
+      "direction": "income",
+      "amount": "100.00",
+      "account_id": "55555555-5555-4555-8555-555555555555"
+    },
+    {
+      "id": "aaaaaaa2-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "entry_date": "2026-10-03",
+      "category_id": "33333333-3333-4333-8333-333333333333",
+      "direction": "income",
+      "amount": "25.50",
+      "account_id": "66666666-6666-4666-8666-666666666666"
+    }
+  ]
+}
