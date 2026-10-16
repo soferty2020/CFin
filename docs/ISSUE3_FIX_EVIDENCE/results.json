@@ -1,0 +1,976 @@
+{
+  "colors": [
+    {
+      "label": "weekday",
+      "day": "15",
+      "classes": "today",
+      "foreground": "rgb(8, 15, 25)",
+      "background": "rgba(0, 0, 0, 0)",
+      "gradient": "linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183))",
+      "ratio": null,
+      "gradientEndpointRatios": [
+        10.999580754934456,
+        8.18943888142518
+      ]
+    },
+    {
+      "label": "saturday",
+      "day": "17",
+      "classes": "weekend today",
+      "foreground": "rgb(232, 241, 245)",
+      "background": "rgb(39, 58, 80)",
+      "gradient": "none",
+      "ratio": 10.14304338042444,
+      "gradientEndpointRatios": null
+    },
+    {
+      "label": "sunday",
+      "day": "18",
+      "classes": "weekend today",
+      "foreground": "rgb(232, 241, 245)",
+      "background": "rgb(39, 58, 80)",
+      "gradient": "none",
+      "ratio": 10.14304338042444,
+      "gradientEndpointRatios": null
+    }
+  ],
+  "events": [
+    {
+      "name": "COLOR",
+      "data": {
+        "label": "weekday",
+        "day": "15",
+        "classes": "today",
+        "foreground": "rgb(8, 15, 25)",
+        "background": "rgba(0, 0, 0, 0)",
+        "gradient": "linear-gradient(135deg, rgb(66, 217, 203), rgb(35, 188, 183))",
+        "ratio": null,
+        "gradientEndpointRatios": [
+          10.999580754934456,
+          8.18943888142518
+        ]
+      }
+    },
+    {
+      "name": "COLOR",
+      "data": {
+        "label": "saturday",
+        "day": "17",
+        "classes": "weekend today",
+        "foreground": "rgb(232, 241, 245)",
+        "background": "rgb(39, 58, 80)",
+        "gradient": "none",
+        "ratio": 10.14304338042444,
+        "gradientEndpointRatios": null
+      }
+    },
+    {
+      "name": "old-edit-reset",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "old-delete-reset",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "pending-75",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "settled-75",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "pending-1200",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "settled-1200",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "pending-old-success",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "text": "Записи в ячейке\n×\n\nДемо-статья A · Доход · 2026-10-03\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "out-of-order-success",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "late-old-success",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "pending-old-old",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "text": "Записи в ячейке\n×\n\nДемо-статья A · Доход · 2026-10-03\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "out-of-order-old",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "late-old-old",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "before-close",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "same-cell-reopened",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "same-cell-after-late-response",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "before-close-error",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "same-cell-reopened-error",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "same-cell-after-late-error",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "current-error",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nСинтетическая ошибка загрузки\nПовторить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": false,
+        "error": "Синтетическая ошибка загрузки\nПовторить",
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "retry-loading",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nЗагрузка записей…\n\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [],
+        "oldEdit": false,
+        "oldDelete": false,
+        "loading": true,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "recovered",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "text": "Записи в ячейке\n×\n\nДемо-статья B · Расход · 2026-10-17\n\nИтого: 6 ₽\n6 ₽\nИзменить\nУдалить\nДобавить запись\nДата\nСтатья\nДемо-статья A\nДемо-статья B\nНаправление\nДоход\nРасход\nСчёт\n— не выбран —\nДемо-банк\nДемо-касса\nСумма, ₽\nДобавить запись",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "oldEdit": true,
+        "oldDelete": true,
+        "loading": false,
+        "error": null,
+        "editValue": null,
+        "deleteConfirm": false
+      }
+    },
+    {
+      "name": "DATA_UNCHANGED",
+      "data": {
+        "baseline": {
+          "old": [
+            {
+              "id": "aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-03",
+              "category_id": "33333333-3333-4333-8333-333333333333",
+              "direction": "income",
+              "amount": "100.00",
+              "account_id": "55555555-5555-4555-8555-555555555555"
+            },
+            {
+              "id": "aaaaaaa2-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-03",
+              "category_id": "33333333-3333-4333-8333-333333333333",
+              "direction": "income",
+              "amount": "25.50",
+              "account_id": "66666666-6666-4666-8666-666666666666"
+            }
+          ],
+          "next": [
+            {
+              "id": "aaaaaaa6-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-17",
+              "category_id": "44444444-4444-4444-8444-444444444444",
+              "direction": "expense",
+              "amount": "6.00",
+              "account_id": "55555555-5555-4555-8555-555555555555"
+            }
+          ]
+        },
+        "after": {
+          "old": [
+            {
+              "id": "aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-03",
+              "category_id": "33333333-3333-4333-8333-333333333333",
+              "direction": "income",
+              "amount": "100.00",
+              "account_id": "55555555-5555-4555-8555-555555555555"
+            },
+            {
+              "id": "aaaaaaa2-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-03",
+              "category_id": "33333333-3333-4333-8333-333333333333",
+              "direction": "income",
+              "amount": "25.50",
+              "account_id": "66666666-6666-4666-8666-666666666666"
+            }
+          ],
+          "next": [
+            {
+              "id": "aaaaaaa6-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+              "entry_date": "2026-10-17",
+              "category_id": "44444444-4444-4444-8444-444444444444",
+              "direction": "expense",
+              "amount": "6.00",
+              "account_id": "55555555-5555-4555-8555-555555555555"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "COLOR",
+      "data": {
+        "label": "sunday",
+        "day": "18",
+        "classes": "weekend today",
+        "foreground": "rgb(232, 241, 245)",
+        "background": "rgb(39, 58, 80)",
+        "gradient": "none",
+        "ratio": 10.14304338042444,
+        "gradientEndpointRatios": null
+      }
+    }
+  ],
+  "timing": [
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/auth/me",
+      "delay": 0,
+      "fail": false,
+      "start": 106.187,
+      "error": "connect ECONNREFUSED 127.0.0.1:55166"
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/auth/me",
+      "delay": 0,
+      "fail": false,
+      "start": 262.0292,
+      "status": 200,
+      "end": 271.5477
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/",
+      "delay": 0,
+      "fail": false,
+      "start": 643.3568,
+      "status": 200,
+      "end": 667.4192
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-cT_4w6hj.js",
+      "delay": 0,
+      "fail": false,
+      "start": 677.1915,
+      "status": 200,
+      "end": 692.6278
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-u5NreHrD.css",
+      "delay": 0,
+      "fail": false,
+      "start": 677.86,
+      "status": 200,
+      "end": 689.852
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/calypso-logo.png",
+      "delay": 0,
+      "fail": false,
+      "start": 726.9605,
+      "status": 200,
+      "end": 744.7179
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/auth/me",
+      "delay": 0,
+      "fail": false,
+      "start": 741.5882,
+      "status": 200,
+      "end": 743.5687
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/favicon.ico",
+      "delay": 0,
+      "fail": false,
+      "start": 743.2142,
+      "status": 404,
+      "end": 750.6755
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/categories",
+      "delay": 0,
+      "fail": false,
+      "start": 819.9201,
+      "status": 200,
+      "end": 821.9836
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/calendar?month=2026-10",
+      "delay": 0,
+      "fail": false,
+      "start": 820.1124,
+      "status": 200,
+      "end": 832.7812
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/accounts",
+      "delay": 0,
+      "fail": false,
+      "start": 821.6107,
+      "status": 200,
+      "end": 833.5413
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/balances",
+      "delay": 0,
+      "fail": false,
+      "start": 821.6908,
+      "status": 200,
+      "end": 833.9925
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/",
+      "delay": 0,
+      "fail": false,
+      "start": 1191.3765,
+      "status": 200,
+      "end": 1193.4468
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-cT_4w6hj.js",
+      "delay": 0,
+      "fail": false,
+      "start": 1200.7985,
+      "status": 200,
+      "end": 1204.6618
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-u5NreHrD.css",
+      "delay": 0,
+      "fail": false,
+      "start": 1202.2468,
+      "status": 200,
+      "end": 1205.5666
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/calypso-logo.png",
+      "delay": 0,
+      "fail": false,
+      "start": 1239.0274,
+      "status": 200,
+      "end": 1241.8775
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/auth/me",
+      "delay": 0,
+      "fail": false,
+      "start": 1253.694,
+      "status": 200,
+      "end": 1255.0937
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/categories",
+      "delay": 0,
+      "fail": false,
+      "start": 1326.9477,
+      "status": 200,
+      "end": 1335.8202
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/calendar?month=2026-10",
+      "delay": 0,
+      "fail": false,
+      "start": 1327.0691,
+      "status": 200,
+      "end": 1336.0884
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/accounts",
+      "delay": 0,
+      "fail": false,
+      "start": 1327.1631,
+      "status": 200,
+      "end": 1336.7016
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/balances",
+      "delay": 0,
+      "fail": false,
+      "start": 1327.7178,
+      "status": 200,
+      "end": 1337.1572
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 1506.9339,
+      "status": 200,
+      "end": 1524.0063
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 0,
+      "fail": false,
+      "start": 1525.5111,
+      "status": 200,
+      "end": 1538.7964
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 1541.9168,
+      "status": 200,
+      "end": 1548.4229
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 1200,
+      "fail": false,
+      "start": 1571.6551,
+      "status": 200,
+      "end": 2786.8673
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 2861.4186,
+      "status": 200,
+      "end": 2868.5739
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 1200,
+      "fail": false,
+      "start": 2893.2578,
+      "status": 200,
+      "end": 4106.801
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 4161.8147,
+      "status": 200,
+      "end": 4162.6889
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 4172.7727,
+      "status": 200,
+      "end": 4258.9332
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 4335.9324,
+      "status": 200,
+      "end": 4338.7789
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 1200,
+      "fail": false,
+      "start": 4376.0087,
+      "status": 200,
+      "end": 5590.7107
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 1200,
+      "fail": false,
+      "start": 5633.2781,
+      "status": 200,
+      "end": 6844.7165
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 5901.2134,
+      "status": 200,
+      "end": 5995.1128
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 1200,
+      "fail": true,
+      "start": 7472.7774,
+      "status": 503,
+      "end": 8684.3922
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 7642.8327,
+      "status": 200,
+      "end": 7726.4565
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 1200,
+      "fail": false,
+      "start": 9245.9115,
+      "status": 200,
+      "end": 10447.7505
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 10448.2903,
+      "status": 200,
+      "end": 10526.726
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 1200,
+      "fail": true,
+      "start": 11871.5656,
+      "status": 503,
+      "end": 13075.4489
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 13076.2016,
+      "status": 200,
+      "end": 13162.8507
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": true,
+      "start": 14514.5401,
+      "status": 503,
+      "end": 14591.7987
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 14812.3499,
+      "status": 200,
+      "end": 14906.234
+    },
+    {
+      "kind": "old",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-03&categoryId=33333333-3333-4333-8333-333333333333&direction=income",
+      "delay": 0,
+      "fail": false,
+      "start": 15180.3477,
+      "status": 200,
+      "end": 15187.4727
+    },
+    {
+      "kind": "next",
+      "method": "GET",
+      "url": "/api/entries?date=2026-10-17&categoryId=44444444-4444-4444-8444-444444444444&direction=expense",
+      "delay": 75,
+      "fail": false,
+      "start": 15188.9794,
+      "status": 200,
+      "end": 15282.204
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/",
+      "delay": 0,
+      "fail": false,
+      "start": 15386.0282,
+      "status": 200,
+      "end": 15390.2426
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-u5NreHrD.css",
+      "delay": 0,
+      "fail": false,
+      "start": 15405.0053,
+      "status": 200,
+      "end": 15413.3295
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/assets/index-cT_4w6hj.js",
+      "delay": 0,
+      "fail": false,
+      "start": 15405.1984,
+      "status": 200,
+      "end": 15414.0678
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/calypso-logo.png",
+      "delay": 0,
+      "fail": false,
+      "start": 15450.3328,
+      "status": 200,
+      "end": 15452.5264
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/auth/me",
+      "delay": 0,
+      "fail": false,
+      "start": 15466.4388,
+      "status": 200,
+      "end": 15468.6504
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/categories",
+      "delay": 0,
+      "fail": false,
+      "start": 15544.7742,
+      "status": 200,
+      "end": 15545.8683
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/calendar?month=2026-10",
+      "delay": 0,
+      "fail": false,
+      "start": 15544.9195,
+      "status": 200,
+      "end": 15547.0219
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/accounts",
+      "delay": 0,
+      "fail": false,
+      "start": 15545.4027,
+      "status": 200,
+      "end": 15547.467
+    },
+    {
+      "kind": null,
+      "method": "GET",
+      "url": "/api/balances",
+      "delay": 0,
+      "fail": false,
+      "start": 15546.7399,
+      "status": 200,
+      "end": 15547.8659
+    }
+  ],
+  "passed": true
+}

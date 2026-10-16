@@ -1,0 +1,487 @@
+{
+  "events": [
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": false
+      }
+    },
+    {
+      "name": "POST-success-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": false
+      }
+    },
+    {
+      "name": "POST-success-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": false
+      }
+    },
+    {
+      "name": "POST-success-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": true
+      }
+    },
+    {
+      "name": "POST-failure-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": true
+      }
+    },
+    {
+      "name": "POST-failure-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": true
+      }
+    },
+    {
+      "name": "POST-failure-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "PATCH-success-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "PATCH-success-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "PATCH-success-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "PATCH-failure-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "PATCH-failure-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "PATCH-failure-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "DELETE-success-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "DELETE-success-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "DELETE-success-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "DELETE-failure-switch",
+      "data": {
+        "heading": "Демо-статья B · Расход · 2026-10-17",
+        "rows": [
+          "6 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "DELETE-failure-close",
+      "data": {
+        "heading": null,
+        "rows": [],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "DELETE-failure-reopen",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": false
+      }
+    },
+    {
+      "name": "DELETE-success-new-confirm",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": true,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "DELETE",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "DELETE-failure-current",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": true,
+        "error": null,
+        "modalError": "Синтетическая ошибка изменения\n×",
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "POST",
+        "path": "/api/entries",
+        "fail": false
+      }
+    },
+    {
+      "name": "POST-success-current",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": null,
+        "confirm": false,
+        "error": null,
+        "modalError": null,
+        "loading": false
+      }
+    },
+    {
+      "name": "MUTATION_RECEIVED",
+      "data": {
+        "method": "PATCH",
+        "path": "/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "fail": true
+      }
+    },
+    {
+      "name": "PATCH-failure-current",
+      "data": {
+        "heading": "Демо-статья A · Доход · 2026-10-03",
+        "rows": [
+          "100 ₽\nИзменить\nУдалить",
+          "25,5 ₽\nИзменить\nУдалить"
+        ],
+        "editing": "100.00",
+        "confirm": false,
+        "error": "Синтетическая ошибка изменения\n×",
+        "modalError": null,
+        "loading": false
+      }
+    }
+  ],
+  "passed": true
+}

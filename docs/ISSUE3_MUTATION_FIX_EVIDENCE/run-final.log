@@ -1,0 +1,49 @@
+MOCK Synthetic CFin mock: http://127.0.0.1:59396/ (PID 19948)
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":false}
+POST-success-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":false}
+POST-success-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":false}
+POST-success-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":true}
+POST-failure-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":true}
+POST-failure-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":true}
+POST-failure-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+PATCH-success-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+PATCH-success-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+PATCH-success-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+PATCH-failure-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+PATCH-failure-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+PATCH-failure-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+DELETE-success-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+DELETE-success-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+DELETE-success-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+DELETE-failure-switch {"heading":"Демо-статья B · Расход · 2026-10-17","rows":["6 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+DELETE-failure-close {"heading":null,"rows":[],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+DELETE-failure-reopen {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":false}
+DELETE-success-new-confirm {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":true,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"DELETE","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+DELETE-failure-current {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":true,"error":null,"modalError":"Синтетическая ошибка изменения\n×","loading":false}
+MUTATION_RECEIVED {"method":"POST","path":"/api/entries","fail":false}
+POST-success-current {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":null,"confirm":false,"error":null,"modalError":null,"loading":false}
+MUTATION_RECEIVED {"method":"PATCH","path":"/api/entries/aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaaa","fail":true}
+PATCH-failure-current {"heading":"Демо-статья A · Доход · 2026-10-03","rows":["100 ₽\nИзменить\nУдалить","25,5 ₽\nИзменить\nУдалить"],"editing":"100.00","confirm":false,"error":"Синтетическая ошибка изменения\n×","modalError":null,"loading":false}
+PORT_RELEASE {"label":"mock","n":59396,"released":true}
+PORT_RELEASE {"label":"proxy","n":59397,"released":true}
+PORT_RELEASE {"label":"chrome","n":59398,"released":true}
+RUN_STATUS {"passed":true}
