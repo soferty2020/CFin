@@ -10,7 +10,7 @@ const ts = require('typescript');
 // This characterizes local route behavior, not PostgreSQL/HTTP/production.
 const source = readFileSync(join(__dirname, '../src/index.ts'), 'utf8');
 const file = ts.createSourceFile('index.ts', source, ts.ScriptTarget.ES2022, true);
-const helpers = new Set(['uuid', 'safeName', 'categoryTables', 'categoryKind', 'categoryDependencies']);
+const helpers = new Set(['uuid', 'safeName', 'directionError', 'categoryTables', 'categoryKind', 'categoryDependencies']);
 const declarations = [];
 const routes = [];
 for (const node of file.statements) {
@@ -37,29 +37,42 @@ function fixture() {
   db.exec(`PRAGMA foreign_keys=ON;
     CREATE TABLE groups (id TEXT PRIMARY KEY, name TEXT NOT NULL, sort_order INTEGER DEFAULT 0);
     CREATE TABLE subgroups (id TEXT PRIMARY KEY, name TEXT NOT NULL, group_id TEXT NOT NULL REFERENCES groups(id) ON DELETE RESTRICT, sort_order INTEGER DEFAULT 0);
-    CREATE TABLE categories (id TEXT PRIMARY KEY, name TEXT NOT NULL, subgroup_id TEXT NOT NULL REFERENCES subgroups(id) ON DELETE RESTRICT, sort_order INTEGER DEFAULT 0);
-    CREATE TABLE entries (id TEXT PRIMARY KEY, category_id TEXT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT);`);
+    CREATE TABLE categories (id TEXT PRIMARY KEY, name TEXT NOT NULL, subgroup_id TEXT NOT NULL REFERENCES subgroups(id) ON DELETE RESTRICT, sort_order INTEGER DEFAULT 0, allow_income INTEGER NOT NULL DEFAULT 1, allow_expense INTEGER NOT NULL DEFAULT 1, CHECK(allow_income OR allow_expense));
+    CREATE TABLE entries (id TEXT PRIMARY KEY, category_id TEXT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT, direction TEXT NOT NULL DEFAULT 'income');
+    CREATE TRIGGER category_directions BEFORE UPDATE OF allow_income,allow_expense ON categories
+    WHEN (NEW.allow_income=0 AND EXISTS(SELECT 1 FROM entries WHERE category_id=NEW.id AND direction='income'))
+      OR (NEW.allow_expense=0 AND EXISTS(SELECT 1 FROM entries WHERE category_id=NEW.id AND direction='expense'))
+    BEGIN SELECT RAISE(ABORT,'categories_entries_direction_check'); END;`);
   const handlers = new Map();
   const app = Object.fromEntries(['get', 'post', 'patch', 'delete'].map(method => [method, (path, _auth, handler) => {
     handlers.set(`${method.toUpperCase()} ${path}`, handler);
   }]));
   let beforeDelete;
-  const pool = {async query(sql, args = []) {
+  const pool = {async connect() { return {query: pool.query, release() {}}; }, async query(sql, args = []) {
     // SQLite uses positional '?' rather than PostgreSQL's $1, $2 placeholders.
-    const statement = db.prepare(sql.replace(/\$\d+/g, '?'));
+    const statement = db.prepare(sql.replace(/\$\d+/g, '?').replace(/ FOR UPDATE$/, ''));
     if (beforeDelete && sql.startsWith('DELETE FROM ')) {
       const inject = beforeDelete;
       beforeDelete = undefined;
       inject(db, args);
     }
     try {
-      const rows = statement.all(...args);
+      const rows = statement.all(...(sql.includes('allow_income=$3') ? [args[0], args[2], args[3], args[1]] : args).map(value => typeof value === 'boolean' ? Number(value) : value));
+      for (const row of rows) {
+        if ('allow_income' in row) row.allow_income = Boolean(row.allow_income);
+        if ('allow_expense' in row) row.allow_expense = Boolean(row.allow_expense);
+      }
       return {rows, rowCount: rows.length};
     } catch (error) {
       // PostgreSQL reports a concurrent FK restriction as SQLSTATE 23503.
       if (error.code === 'ERR_SQLITE_ERROR' && error.message === 'FOREIGN KEY constraint failed') {
         const pgError = new Error(error.message);
         pgError.code = '23503';
+        throw pgError;
+      }
+      if (error.message === 'categories_entries_direction_check') {
+        const pgError = new Error(error.message);
+        pgError.constraint = error.message;
         throw pgError;
       }
       throw error;
@@ -76,8 +89,8 @@ function fixture() {
     await handler({params: {kind, id}, body}, response, error => { throw error; });
     return response;
   }
-  const create = (kind, name, parentId) => request('POST', '/api/categories/:kind', {kind, body: {name, parentId}});
-  const rename = (kind, id, name) => request('PATCH', '/api/categories/:kind/:id', {kind, id, body: {name}});
+  const create = (kind, name, parentId, flags = {}) => request('POST', '/api/categories/:kind', {kind, body: {name, parentId, ...flags}});
+  const rename = (kind, id, name, flags = {}) => request('PATCH', '/api/categories/:kind/:id', {kind, id, body: {name, ...flags}});
   const remove = (kind, id) => request('DELETE', '/api/categories/:kind/:id', {kind, id});
   const tree = () => request('GET', '/api/categories');
   return {db, create, rename, remove, tree, onDelete(fn) { beforeDelete = fn; }};
@@ -130,7 +143,7 @@ test('characterization: dependencies block all deletes without losing descendant
   const f = fixture();
   try {
     const {group, sub, cat} = await hierarchy(f);
-    f.db.prepare('INSERT INTO entries VALUES (?, ?)').run(randomUUID(), cat.id);
+    f.db.prepare('INSERT INTO entries(id,category_id) VALUES (?, ?)').run(randomUUID(), cat.id);
     for (const [kind, id, message] of [
       ['groups', group.id, 'Нельзя удалить группу, содержащую подгруппы.'],
       ['subgroups', sub.id, 'Нельзя удалить подгруппу, содержащую статьи.'],
@@ -175,5 +188,47 @@ test('characterization: invalid kind, id, name and missing parent reject without
     assert.equal((await f.remove('groups', 'bad-id')).statusCode, 400);
     assert.equal((await f.remove('unknown', randomUUID())).statusCode, 400);
     assert.deepEqual((await f.tree()).body, {groups: [], subgroups: [], categories: []});
+  } finally { f.db.close(); }
+});
+
+test('directions: default both, three valid states, invalid flags and rename-only preserve settings', async () => {
+  const f = fixture();
+  try {
+    const {sub, cat} = await hierarchy(f);
+    assert.equal(cat.allow_income, true);
+    assert.equal(cat.allow_expense, true);
+    assert.equal((await f.create('categories', 'No', sub.id, {allow_income:false, allow_expense:false})).statusCode, 400);
+    assert.equal((await f.create('categories', 'Bad', sub.id, {allow_income:'true', allow_expense:false})).statusCode, 400);
+    assert.equal((await f.create('categories', 'Partial', sub.id, {allow_income:false})).statusCode, 400);
+    for (const flags of [{allow_income:true, allow_expense:false}, {allow_income:false, allow_expense:true}, {allow_income:true, allow_expense:true}]) {
+      const created = await f.create('categories', 'Valid', sub.id, flags);
+      assert.equal(created.statusCode, 201);
+      assert.equal(created.body.allow_income, flags.allow_income);
+      assert.equal(created.body.allow_expense, flags.allow_expense);
+      const renamed = await f.rename('categories', created.body.id, 'Renamed');
+      assert.equal(renamed.body.allow_income, flags.allow_income);
+      assert.equal(renamed.body.allow_expense, flags.allow_expense);
+    }
+    assert.equal((await f.rename('categories', cat.id, 'Cat', {allow_income:false})).statusCode, 400);
+    assert.equal((await f.rename('categories', cat.id, 'Cat', {allow_income:false, allow_expense:false})).statusCode, 400);
+    assert.equal((await f.tree()).body.categories.length, 4);
+  } finally { f.db.close(); }
+});
+
+test('directions: linked entries block disabling without mutation; deleting last entry permits it', async () => {
+  const f = fixture();
+  try {
+    const {cat} = await hierarchy(f);
+    const entry = randomUUID();
+    f.db.prepare('INSERT INTO entries(id,category_id,direction) VALUES(?,?,?)').run(entry, cat.id, 'expense');
+    const flags = {allow_income:true, allow_expense:false};
+    const blocked = await f.rename('categories', cat.id, 'Changed', flags);
+    assert.equal(blocked.statusCode, 409);
+    assert.equal((await f.tree()).body.categories[0].name, 'Cat');
+    assert.equal((await f.tree()).body.categories[0].allow_expense, true);
+    f.db.prepare('DELETE FROM entries WHERE id=?').run(entry);
+    const updated = await f.rename('categories', cat.id, 'Changed', flags);
+    assert.equal(updated.statusCode, 200);
+    assert.equal(updated.body.allow_expense, false);
   } finally { f.db.close(); }
 });
