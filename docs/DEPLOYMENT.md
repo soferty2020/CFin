@@ -9,6 +9,12 @@
 
 Production is the source of truth for deployed behavior.
 
+## Authorization boundaries
+
+The `sudo docker compose` commands below are illustrative workflow examples, not standing permission to run them or a grant of general sudo/Docker access. A production deploy requires Owner authorization for the exact release and an exact scoped deploy plan executed by a qualified production operator. Necessary production migrations included in that authorized deploy do not require a second approval, but must be identified in the scoped plan and performed only by that qualified operator within the authorized release. These examples alone authorize no production action.
+
+If a post-deploy issue occurs, report its cause and a compatible rollback plan; execute the rollback only after Owner approval. Restoring a database backup, deleting data, and changing access each require separate Owner authorization; neither deploy nor rollback approval implicitly covers them.
+
 ## Standard deploy workflow
 
 1. Verify the production version relevant to the issue.
