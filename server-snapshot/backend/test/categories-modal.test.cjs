@@ -16,7 +16,9 @@ const callbacks = ['refreshCategory', 'submitModal'].map(name => {
   assert.ok(statement, `the actual ${name} callback is present`);
   return statement.getText(file);
 });
-const javascript = ts.transpileModule(`${callbacks.join('\n')}; return submitModal;`, {
+const javascript = ts.transpileModule(`const cats=[];const allowIncome=true,allowExpense=true;
+  const busyRequest={current:0},cellSession={current:0},modalRef={current:modal};
+  ${callbacks.join('\n')}; return submitModal;`, {
   compilerOptions: {target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.React},
 }).outputText;
 
@@ -59,8 +61,8 @@ for (const kind of ['groups', 'subgroups', 'categories']) {
         () => {}, () => {}, async (...args) => { calls.push(args); },
         async () => { refreshed++; }, () => {});
       await submit();
-      assert.deepEqual(calls, type === 'create' ? [[`/categories/${kind}`, 'POST', {name: 'New', parentId}]]
-        : type === 'rename' ? [[`/categories/${kind}/${id}`, 'PATCH', {name: 'New'}]]
+      assert.deepEqual(calls, type === 'create' ? [[`/categories/${kind}`, 'POST', kind === 'categories' ? {name: 'New', parentId, allow_income: true, allow_expense: true} : {name: 'New', parentId}]]
+        : type === 'rename' ? [[`/categories/${kind}/${id}`, 'PATCH', kind === 'categories' ? {name: 'New', allow_income: true, allow_expense: true} : {name: 'New'}]]
           : [[`/categories/${kind}/${id}`, 'DELETE']]);
       assert.equal(refreshed, 1);
       assert.equal(modal, null);
@@ -86,4 +88,25 @@ test('characterization: modal validation and 409 dependency error do not close t
   assert.equal(writes, 1);
   assert.equal(modalError, 'Нельзя удалить статью, содержащую финансовые записи.');
   assert.equal(modal.type, 'delete');
+});
+
+test('directions: flag-only category edit persists and 409 retains modal', async () => {
+  const id = '11111111-1111-4111-8111-111111111111';
+  let modal = {type:'rename', kind:'categories', id, name:'Same'};
+  let error = '';
+  const calls = [];
+  const code = javascript.replace(/const cats = \[\];\s*const allowIncome = true, allowExpense = true;/,
+    `const cats=[{id:'${id}',allow_income:true,allow_expense:true}];const allowIncome=false,allowExpense=true;`);
+  assert.notEqual(code, javascript, 'test seam must replace defaults');
+  const invoke = api => new Function('modal', 'modalText', 'setModal', 'setModalError', 'setBusy',
+    'api', 'load', 'setError', code)(modal, 'Same', value => {modal=value;},
+    value => {error=value;}, () => {}, api, async () => {}, () => {});
+  await invoke(async (...args) => {calls.push(args); throw Error('Сначала удалите все записи');})();
+  assert.equal(modal.type,'rename');
+  assert.equal(error,'Сначала удалите все записи');
+  assert.deepEqual(calls[0], [`/categories/categories/${id}`, 'PATCH',
+    {name:'Same',allow_income:false,allow_expense:true}]);
+  await invoke(async (...args) => {calls.push(args);})();
+  assert.equal(modal,null);
+  assert.equal(calls.length,2);
 });

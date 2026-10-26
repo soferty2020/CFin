@@ -19,8 +19,10 @@ const uuid=(x:unknown)=>typeof x==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{
 const validDate=(x:unknown)=>typeof x==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&!Number.isNaN(Date.parse(x))&&new Date(x+'T00:00:00Z').toISOString().slice(0,10)===x;
 const validAmount=(x:unknown)=>typeof x==='string'&&/^\d{1,16}(\.\d{1,2})?$/.test(x)&&Number(x)>0;
 const safeName=(x:unknown)=>typeof x==='string'&&x.trim().length>0&&x.trim().length<=120;
+const directionError=(error:unknown)=>error instanceof Error && 'constraint' in error &&
+  (error.constraint==='entries_category_direction_check' || error.constraint==='categories_entries_direction_check');
 app.get('/api/categories',auth,async(_req,res,next)=>{try{const [g,s,c]=await Promise.all([pool.query('SELECT * FROM groups ORDER BY sort_order,name'),pool.query('SELECT * FROM subgroups ORDER BY sort_order,name'),pool.query('SELECT * FROM categories ORDER BY sort_order,name')]);res.json({groups:g.rows,subgroups:s.rows,categories:c.rows});}catch(e){next(e)}});
-app.post('/api/categories/:kind',auth,async(req,res,next)=>{try{const {kind}=req.params,{name,parentId}=req.body;if(!safeName(name)||!['groups','subgroups','categories'].includes(kind)){res.status(400).json({error:'Некорректные данные'});return;}let q:string,args:unknown[];if(kind==='groups'){q='INSERT INTO groups(id,name) VALUES($1,$2) RETURNING *';args=[randomUUID(),name.trim()]}else if(kind==='subgroups'&&uuid(parentId)){q='INSERT INTO subgroups(id,name,group_id) VALUES($1,$2,$3) RETURNING *';args=[randomUUID(),name.trim(),parentId]}else if(kind==='categories'&&uuid(parentId)){q='INSERT INTO categories(id,name,subgroup_id) VALUES($1,$2,$3) RETURNING *';args=[randomUUID(),name.trim(),parentId]}else{res.status(400).json({error:'Выберите родительский элемент'});return;}const {rows}=await pool.query(q,args);res.status(201).json(rows[0]);}catch(e){next(e)}});
+app.post('/api/categories/:kind',auth,async(req,res,next)=>{try{const {kind}=req.params,{name,parentId,allow_income=true,allow_expense=true}=req.body;if(!safeName(name)||!['groups','subgroups','categories'].includes(kind)){res.status(400).json({error:'Некорректные данные'});return;}if(kind==='categories'&&((Object.prototype.hasOwnProperty.call(req.body,'allow_income')!==Object.prototype.hasOwnProperty.call(req.body,'allow_expense'))||typeof allow_income!=='boolean'||typeof allow_expense!=='boolean'||(!allow_income&&!allow_expense))){res.status(400).json({error:'Выберите хотя бы одно направление'});return;}let q:string,args:unknown[];if(kind==='groups'){q='INSERT INTO groups(id,name) VALUES($1,$2) RETURNING *';args=[randomUUID(),name.trim()]}else if(kind==='subgroups'&&uuid(parentId)){q='INSERT INTO subgroups(id,name,group_id) VALUES($1,$2,$3) RETURNING *';args=[randomUUID(),name.trim(),parentId]}else if(kind==='categories'&&uuid(parentId)){q='INSERT INTO categories(id,name,subgroup_id,allow_income,allow_expense) VALUES($1,$2,$3,$4,$5) RETURNING *';args=[randomUUID(),name.trim(),parentId,allow_income,allow_expense]}else{res.status(400).json({error:'Выберите родительский элемент'});return;}const {rows}=await pool.query(q,args);res.status(201).json(rows[0]);}catch(e){next(e)}});
 // Only these fixed table names can be interpolated into SQL.
 const categoryTables = {
   groups: 'groups',
@@ -43,16 +45,55 @@ app.patch('/api/categories/:kind/:id', auth, async (req, res, next) => {
       res.status(400).json({error: 'Некорректные данные'});
       return;
     }
-    const {rows} = await pool.query(
-      `UPDATE ${categoryTables[kind]} SET name=$1 WHERE id=$2 RETURNING *`,
-      [name.trim(), id]
-    );
+    const hasIncome = Object.prototype.hasOwnProperty.call(req.body, 'allow_income');
+    const hasExpense = Object.prototype.hasOwnProperty.call(req.body, 'allow_expense');
+    if (kind === 'categories' && (hasIncome !== hasExpense ||
+        (hasIncome && (typeof req.body.allow_income !== 'boolean' ||
+          typeof req.body.allow_expense !== 'boolean' ||
+          (!req.body.allow_income && !req.body.allow_expense))))) {
+      res.status(400).json({error: 'Выберите хотя бы одно направление'});
+      return;
+    }
+    if (kind !== 'categories' && (hasIncome || hasExpense)) {
+      res.status(400).json({error: 'Направления доступны только для статей'});
+      return;
+    }
+    let rows: any[];
+    if (kind === 'categories' && hasIncome) {
+      const client = await pool.connect();
+      try {
+        await client.query('BEGIN');
+        // A separate statement after the lock sees entries committed by a prior writer.
+        const locked = await client.query('SELECT id FROM categories WHERE id=$1 FOR UPDATE', [id]);
+        if (!locked.rowCount) {
+          await client.query('ROLLBACK');
+          res.status(404).json({error: 'Элемент не найден'});
+          return;
+        }
+        const updated = await client.query(
+          'UPDATE categories SET name=$1,allow_income=$3,allow_expense=$4 WHERE id=$2 RETURNING *',
+          [name.trim(), id, req.body.allow_income, req.body.allow_expense]
+        );
+        rows = updated.rows;
+        await client.query('COMMIT');
+      } catch (error) {
+        await client.query('ROLLBACK');
+        throw error;
+      } finally { client.release(); }
+    } else {
+      const result = await pool.query(`UPDATE ${categoryTables[kind]} SET name=$1 WHERE id=$2 RETURNING *`, [name.trim(), id]);
+      rows = result.rows;
+    }
     if (!rows.length) {
       res.status(404).json({error: 'Элемент не найден'});
       return;
     }
     res.json(rows[0]);
   } catch (error) {
+    if (directionError(error)) {
+      res.status(409).json({error: 'Сначала удалите все записи отключаемого направления.'});
+      return;
+    }
     next(error);
   }
 });
@@ -99,8 +140,8 @@ app.delete('/api/categories/:kind/:id', auth, async (req, res, next) => {
 });
 
 app.get('/api/entries',auth,async(req,res,next)=>{try{const {date,categoryId,direction}=req.query;if(!validDate(date)||!uuid(categoryId)||!['income','expense'].includes(String(direction))){res.status(400).json({error:'Некорректная ячейка'});return;}const {rows}=await pool.query('SELECT id,category_id,entry_date::text,direction,amount::text,account_id FROM entries WHERE entry_date=$1 AND category_id=$2 AND direction=$3 ORDER BY created_at,id',[date,categoryId,direction]);res.json(rows);}catch(e){next(e)}});
-app.post('/api/entries',auth,async(req,res,next)=>{try{const {entryDate,categoryId,direction,amount,accountId}=req.body;if(!validDate(entryDate)||!uuid(categoryId)||!['income','expense'].includes(direction)||!validAmount(amount)){res.status(400).json({error:'Проверьте дату, статью, направление и сумму'});return;}const acc=uuid(accountId)?accountId:null;const {rows}=await pool.query('INSERT INTO entries(id,entry_date,category_id,direction,amount,account_id,created_by) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,entry_date::text,category_id,direction,amount::text,account_id',[randomUUID(),entryDate,categoryId,direction,amount,acc,(req as Authed).userId]);res.status(201).json(rows[0]);}catch(e){next(e)}});
-app.patch('/api/entries/:id',auth,async(req,res,next)=>{try{const {entryDate,categoryId,direction,amount,accountId}=req.body;if(!uuid(req.params.id)||!validDate(entryDate)||!uuid(categoryId)||!['income','expense'].includes(direction)||!validAmount(amount)){res.status(400).json({error:'Некорректные данные'});return;}const acc=uuid(accountId)?accountId:null;const {rows}=await pool.query('UPDATE entries SET entry_date=$1,category_id=$2,direction=$3,amount=$4,account_id=$5,updated_at=now() WHERE id=$6 RETURNING id,entry_date::text,category_id,direction,amount::text,account_id',[entryDate,categoryId,direction,amount,acc,req.params.id]);if(!rows.length){res.status(404).json({error:'Запись не найдена'});return;}res.json(rows[0]);}catch(e){next(e)}});
+app.post('/api/entries',auth,async(req,res,next)=>{try{const {entryDate,categoryId,direction,amount,accountId}=req.body;if(!validDate(entryDate)||!uuid(categoryId)||!['income','expense'].includes(direction)||!validAmount(amount)){res.status(400).json({error:'Проверьте дату, статью, направление и сумму'});return;}const acc=uuid(accountId)?accountId:null;const {rows}=await pool.query('INSERT INTO entries(id,entry_date,category_id,direction,amount,account_id,created_by) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING id,entry_date::text,category_id,direction,amount::text,account_id',[randomUUID(),entryDate,categoryId,direction,amount,acc,(req as Authed).userId]);res.status(201).json(rows[0]);}catch(e){if(directionError(e)){res.status(409).json({error:'Направление не разрешено для статьи.'});return;}next(e)}});
+app.patch('/api/entries/:id',auth,async(req,res,next)=>{try{const {entryDate,categoryId,direction,amount,accountId}=req.body;if(!uuid(req.params.id)||!validDate(entryDate)||!uuid(categoryId)||!['income','expense'].includes(direction)||!validAmount(amount)){res.status(400).json({error:'Некорректные данные'});return;}const acc=uuid(accountId)?accountId:null;const {rows}=await pool.query('UPDATE entries SET entry_date=$1,category_id=$2,direction=$3,amount=$4,account_id=$5,updated_at=now() WHERE id=$6 RETURNING id,entry_date::text,category_id,direction,amount::text,account_id',[entryDate,categoryId,direction,amount,acc,req.params.id]);if(!rows.length){res.status(404).json({error:'Запись не найдена'});return;}res.json(rows[0]);}catch(e){if(directionError(e)){res.status(409).json({error:'Направление не разрешено для статьи.'});return;}next(e)}});
 app.delete('/api/entries/:id',auth,async(req,res,next)=>{try{if(!uuid(req.params.id)){res.status(400).json({error:'Некорректный идентификатор'});return;}const r=await pool.query('DELETE FROM entries WHERE id=$1',[req.params.id]);res.status(r.rowCount?204:404).end();}catch(e){next(e)}});
 app.get('/api/calendar',auth,async(req,res,next)=>{try{const month=String(req.query.month||'');if(!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)){res.status(400).json({error:'Формат месяца: ГГГГ-ММ'});return;}const {rows}=await pool.query("SELECT category_id,entry_date::text AS date,direction,sum(amount)::text AS amount,count(*)::int AS count FROM entries WHERE entry_date >= $1::date AND entry_date < ($1::date + interval '1 month') GROUP BY category_id,entry_date,direction ORDER BY entry_date",[month+'-01']);res.json({month,cells:rows});}catch(e){next(e)}});
 app.get('/api/accounts',auth,async(_req,res,next)=>{try{const {rows}=await pool.query('SELECT id,name,kind,opening_balance::text,is_active,sort_order FROM accounts ORDER BY sort_order,name');res.json(rows);}catch(e){next(e)}});
