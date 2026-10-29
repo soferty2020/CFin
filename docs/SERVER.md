@@ -82,6 +82,16 @@ Backup directory: /srv/cfin/backups
 
 Historical backups include a database dump and UI backup folders. Before risky data/schema work, create a fresh PostgreSQL dump and file backup.
 
+For the PR #16 release on 2026-10-28, private recovery directory
+`/srv/cfin/backups/pr16-c00e2e3-20261028-aa68cd50` retains the original
+`frozen-cfin.dump`, checksum and release evidence; an isolated restore clone
+also remains retained. The final readback verified the dump checksum and
+clone isolation. This is a historical recovery location, **not** a generic
+backup destination or permission to delete/reuse it. Retain the frozen dump,
+clone and evidence; cleanup or restore-to-live requires a separate gate.
+The scoped release phases and limitations are in `DEPLOYMENT.md` and
+`CURRENT_STATE.md`.
+
 ## Diagnostics
 
 ```bash
@@ -91,6 +101,8 @@ sudo docker compose logs --tail=100 db
 ```
 
 Backend health endpoint: GET /api/health, expected response {"ok":true}.
+Docker Health is optional for API/web; inspect running status and the HTTP
+endpoint without dereferencing a missing `.State.Health.Status` field.
 
 ## Source of truth
 
