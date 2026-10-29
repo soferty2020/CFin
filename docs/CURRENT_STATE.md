@@ -1,5 +1,42 @@
 # CFin — Current State
 
+## PR #16 / Issue #10 — 2026-10-28 production release (scoped verification)
+
+[PR #16](https://github.com/soferty2020/CFin/pull/16) merged as
+`c00e2e367d616aa9d88a470535c884a2ed845984`. The operator's release
+record (`t_644a9ad1`, comments 345–368) documents the approved CFin-only
+web-then-API stop, post-stop bounded DB session checks, retained private
+backup plus verified isolated restore **before** clone rehearsal and one-time
+live migration, then API-then-web cutover. Read-only follow-up `t_5976a610`
+and finalization `t_dea71d17` verified the resulting state. This is a
+historical record, not authority to repeat those operations.
+
+Final readback: DB running/healthy on original image
+`sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea`;
+API running on candidate image
+`sha256:40abb620e3d47ca80279ae8c8da9cb2cb00fee5f301d26053a2d14bdeab38833`;
+web running on candidate image
+`sha256:010cd4987efe85e23b5d9bdecb624822de240124df82d07de996dfea18d08972`.
+Public HTTPS `/` and `/api/health` each returned 200, the CFin vhost proxied
+to loopback web without an active maintenance return, and no scoped stop
+remained to reverse. API/web Docker Health maps were absent; absence is not
+an unhealthy result. Live and isolated-clone catalog assertions were
+`MIGRATED`; seven-table live/clone counts and row digests matched each other
+and retained evidence at the measured snapshot. This is bounded parity,
+not proof of all data, future stability or universal writer absence.
+
+Recovery directory `/srv/cfin/backups/pr16-c00e2e3-20261028-aa68cd50`
+retains `frozen-cfin.dump` (12,979 bytes; SHA-256
+`22c6c1b82110c20160bf9594667f34a2c4803de8b90ef87d5b4a0cb1f3c574a9`),
+its verified checksum, isolated clone and evidence. Preserve these; no
+restore-to-live, rollback or deletion occurred. The operator's **one**
+authenticated POST attempt returned 401 and was not retried or reset; no
+operator authenticated GET smoke followed. The Owner personally authenticated
+and confirmed article direction selection ("Все ок"). That UI acceptance
+does **not** verify every calendar or entry scenario. Finalization involved
+read-only checks and no restart or vhost change. See `DEPLOYMENT.md` for a
+phase-gated procedure, not a claim of new production checks by this docs edit.
+
 ## PR #12 / Issue #3 — 2026-10-14 (Owner-reported deployment)
 
 PR #12 [MERGED](https://github.com/soferty2020/CFin/pull/12) with merge commit `213ddf729a30dc9c8317b0697c1432b898782c9c`. Owner reports local `main` fast-forwarded to that commit and a manual production deploy. The production web image is reported as `sha256:967864020d59166b56ef05f9e106d34f6b7320df1c66a1b9556654950ae89ebf`. The image was prepared from a non-running container of the previous web image by copying locally built static assets; no server-side npm install, Docker build or base-image pull was reported. Only `frontend/src/main.tsx` and `frontend/src/style.css` were updated on the server, and only `web` was switched. The synthetic mock was not deployed; old static assets remain alongside the new ones in the image.
