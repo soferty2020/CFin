@@ -14,8 +14,10 @@ This file captures durable decisions from the project history. If a newer explic
 - Weekend days are visually highlighted but remain fully functional.
 - Planned/expected money is maintained manually and is not automatically moved to another date.
 - Cash gaps are surfaced visually; CFin does not automatically reschedule payments.
-- A user may begin mid-year by entering an opening balance for January 1 and manually filling required elapsed months.
+- A user may begin mid-year by manually attesting effective dates and signed opening amounts per account and filling required elapsed months; an undated legacy opening is not silently adopted.
 - Internal transfers between company-owned accounts are not company income or expense.
+- All entered operations count once on their stored date, including future-month entries; no execution-status classification or overdue exclusion is inferred. End-of-yesterday is current; today onward is forecast. The server business timezone is Asia/Novosibirsk.
+- A company balance is the sum of per-account balances; if inventory, openings, account allocation, historical transfer classification or reset reconciliation is unresolved, the trusted total is incomplete/null rather than an invented zero. New transfers have two equal/opposite account legs; legacy paired legs are linked by manual review without rewriting or double-counting history.
 - Linked financial history must not be silently cascade-deleted.
 
 ## UX
