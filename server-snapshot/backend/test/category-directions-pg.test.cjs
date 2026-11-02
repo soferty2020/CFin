@@ -21,15 +21,27 @@ test('entry POST/PATCH map database direction guard to 409 without partial write
   const app = {post:(path,_auth,fn)=>handlers.set('POST '+path,fn),
     patch:(path,_auth,fn)=>handlers.set('PATCH '+path,fn)};
   const guard = Object.assign(new Error('blocked'), {constraint:'entries_category_direction_check'});
-  const pool = {async query() {throw guard;}};
-  new Function('app','auth','pool','uuid','validDate','validAmount','randomUUID',js)(app,()=>{},pool,
-    ()=>true,()=>true,()=>true,randomUUID);
+  const calls = [];
+  const client = {async query(sql) {
+    calls.push(sql);
+    if (sql === 'BEGIN' || sql === 'ROLLBACK') return {rows:[]};
+    if (sql.startsWith('SELECT id,entry_date::text,category_id,direction,amount::text,account_id FROM entries')) return {rowCount:1,rows:[{entry_date:'2026-10-17',category_id:'a',direction:'expense',amount:'10',account_id:'b'}]};
+    if (sql.startsWith('SELECT ') && sql.includes('FROM entry_financial_review')) return {rows:[]};
+    if (sql.startsWith('SELECT id FROM accounts')) return {rowCount:1,rows:[{id:'b'}]};
+    if (sql.startsWith('INSERT INTO entries') || sql.startsWith('UPDATE entries')) throw guard;
+    throw new Error('Unexpected SQL: ' + sql);
+  }, release() {calls.push('RELEASE');}};
+  const pool = {async connect() {return client;}};
+  new Function('app','auth','pool','uuid','validDate','validAmount','randomUUID','reviewFingerprint',js)(app,()=>{},pool,
+    ()=>true,()=>true,()=>true,randomUUID,()=>false);
   for (const [method,path] of [['POST','/api/entries'],['PATCH','/api/entries/:id']]) {
     const result = {code:200,status(code){this.code=code;return this;},json(body){this.body=body;}};
-    await handlers.get(method+' '+path)({params:{id:randomUUID()},body:{entryDate:'2026-10-17',categoryId:randomUUID(),direction:'expense',amount:'10'},userId:randomUUID()},result,error=>{throw error;});
+    await handlers.get(method+' '+path)({params:{id:randomUUID()},body:{entryDate:'2026-10-17',categoryId:randomUUID(),direction:'expense',amount:'10',accountId:randomUUID()},userId:randomUUID()},result,error=>{throw error;});
     assert.equal(result.code,409);
     assert.match(result.body.error,/Направление/);
   }
+  assert.deepEqual(calls.map(sql => sql === 'RELEASE' ? sql : sql.split(' ')[0]),
+    ['BEGIN','SELECT','INSERT','ROLLBACK','RELEASE','BEGIN','SELECT','SELECT','SELECT','UPDATE','ROLLBACK','RELEASE']);
 });
 
 // Run only against a disposable PostgreSQL database explicitly supplied by the operator.

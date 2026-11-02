@@ -11,7 +11,7 @@ CFin is an existing production cash-flow and payment-calendar application. It is
 - Past dates remain editable.
 - Weekend cells are visually highlighted but remain fully clickable and functional.
 - Planned/expected money is maintained manually; the system must not silently move payment dates.
-- The user may start mid-year by entering an opening balance for January 1 and manually filling elapsed months.
+- The user may start mid-year by manually attesting each account's opening amount and effective date and manually filling required elapsed months. Undated legacy account openings are not automatically adopted.
 - Deletion must not silently destroy linked financial history.
 - Internal transfers between company accounts are not company income or expense.
 - Cash gaps should be highlighted, not automatically fixed by moving payments.
@@ -22,9 +22,9 @@ CFin is an existing production cash-flow and payment-calendar application. It is
 - category
 - direction
 - amount
+- account (nullable on legacy rows; explicit reviewed allocation required for complete balances)
 
 Planned later:
-- account
 - counterparty
 - project
 - comment
@@ -110,11 +110,11 @@ A previously agreed product direction is:
 - current money = calculated balance at the end of yesterday;
 - today is part of the forecast.
 
-This must be confirmed when P3 is designed in detail because it affects balance semantics.
+For local Issue #4 this is confirmed: use the Asia/Novosibirsk server date. All entered records, including future ones, count once on their stored date. Today is included in the forecast exactly once. Missed or overdue payments must be manually moved or deleted; no planned/actual row status or automatic rollover exists. A company balance is the sum of attested per-account balances and is incomplete if any required account/record is not reconciled. See `FINANCIAL_CORE_V1.md` for the local implementation contract; this does not assert deployed behavior.
 
 ### Accounts and transfers
 
-Accounts are planned for a later stage.
+Accounts exist in the local snapshot. Issue #4 implements dated signed attestations, per-account daily balances, and atomic source-to-target internal transfers locally; no production deployment is implied.
 
 Future functionality may include:
 
