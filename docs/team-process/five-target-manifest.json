@@ -1,0 +1,67 @@
+{
+  "version": "v1.3",
+  "encoding": "UTF-8 without BOM",
+  "additions": "LF; unchanged source bytes retained (including mixed endings)",
+  "targets": [
+    {
+      "oldPath": "D:/Hermes/TeamProcess/PROC-P01-P16-v1.2.md",
+      "newPath": "D:/Hermes/TeamProcess/PROC-P01-P16-v1.3.md",
+      "artifact": "PROC-P01-P16-v1.3.md",
+      "sourceSha256": "525f7ff8db801202de1d6ae27c49060dfe85ed3677111827e16d136a984fc7fa",
+      "finalSha256": "611f1b346c80d379b64389a128b5d9489c1d524a68b3d773bb4b7428c6f8fe92",
+      "oldCRLF": 0,
+      "oldLFOnly": 34,
+      "finalCRLF": 0,
+      "finalLFOnly": 53,
+      "terminalNewline": true
+    },
+    {
+      "oldPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/lead/SOUL.md",
+      "newPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/lead/SOUL.md",
+      "artifact": "lead.SOUL.md",
+      "sourceSha256": "5657996539b0ac88f504babe7f374591cb88e7f0dd3a64b0ae2bd6d56f765820",
+      "finalSha256": "e312ddd301d95a532db88a31e8e73113d8538769761d13b6ae08538afb0d8415",
+      "oldCRLF": 0,
+      "oldLFOnly": 25,
+      "finalCRLF": 0,
+      "finalLFOnly": 29,
+      "terminalNewline": true
+    },
+    {
+      "oldPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/programmer/SOUL.md",
+      "newPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/programmer/SOUL.md",
+      "artifact": "programmer.SOUL.md",
+      "sourceSha256": "743b17b2832994b839aa6155b8a1bce9a7c48dd99607483eee8239eb0dfb7cd2",
+      "finalSha256": "9c20a6b974a85095ebec4ec589e515ece648d8ce6915aa942d16297087c118c8",
+      "oldCRLF": 0,
+      "oldLFOnly": 30,
+      "finalCRLF": 0,
+      "finalLFOnly": 34,
+      "terminalNewline": true
+    },
+    {
+      "oldPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/reviewer/SOUL.md",
+      "newPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/reviewer/SOUL.md",
+      "artifact": "reviewer.SOUL.md",
+      "sourceSha256": "e68a007ab16b91255cca38947dd52f9d918550fb87e1fd30023c3c053619daef",
+      "finalSha256": "e61885718066e9c573fe96a3a3d96f03aa92acba6aa0c371d1b51ef1aaf2aea3",
+      "oldCRLF": 0,
+      "oldLFOnly": 28,
+      "finalCRLF": 0,
+      "finalLFOnly": 32,
+      "terminalNewline": true
+    },
+    {
+      "oldPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/architect/SOUL.md",
+      "newPath": "C:/Users/Otrade/AppData/Local/hermes/profiles/architect/SOUL.md",
+      "artifact": "architect.SOUL.md",
+      "sourceSha256": "095cb4b0b553e52a02c98e4daa9031f00891b8709884eff25ae28eb2d4691c19",
+      "finalSha256": "d3045a7238066c154a14a0e08524b702e86496f5840fc3207b9a3135005cc21e",
+      "oldCRLF": 9,
+      "oldLFOnly": 15,
+      "finalCRLF": 9,
+      "finalLFOnly": 19,
+      "terminalNewline": true
+    }
+  ]
+}
